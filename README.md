@@ -1,4 +1,27 @@
-# Quiescent
+# Quiescent for React 16
+
+This is a fork of [Quiescent](https://github.com/levand/quiescent) that works
+with React 16. Additionally, it removes the long deprecated (and misbehaving)
+life-cycle wrappers provided by Quiescent.
+
+It does not yet provide wrappers for new lifecycle hooks in React 16, but
+upcoming releases will.
+
+## Install
+
+With tools.deps:
+
+```clj
+cjohansen/quiescent {:mvn/version "16.2.0-0"}
+```
+
+With Leiningen:
+
+```clj
+[cjohansen/quiescent "16.2.0-0"]
+```
+
+# Quiescent [Original Readme]
 
 A lightweight ClojureScript abstraction over ReactJS, emphasizing its
 ability to (re)render immutable values efficiently.
@@ -184,6 +207,13 @@ provided to the component constructor.
   information on ReactJS and how it works.
 
 ## CHANGE LOG
+
+### 16.2.0-0
+
+Warning: This release contains breaking changes.
+
+- **breaking change**: Upgrade React from 15 to 16
+- **breaking change**: Remove deprecated wrappers (see below)
 
 ### 0.2.0
 
