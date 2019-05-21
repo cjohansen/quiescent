@@ -1,6 +1,8 @@
 (ns quiescent.core
   (:require [cljsjs.react]
-            [cljsjs.react.dom])
+            [cljsjs.react.dom]
+            [cljsjs.react-transition-group]
+            [quiescent.factory :refer [create-react-class]])
   (:require-macros [quiescent.core :refer [react-method]]))
 
 (def ^:dynamic *component*
@@ -124,7 +126,6 @@
   ([renderer] (component renderer {}))
   ([renderer opts]
     (let [impl (merge
-                 (when (:name opts) {:displayName (:name opts)})
                  {:shouldComponentUpdate (react-method [next-props _]
                                            (not= (.-value (.-props *component*))
                                                  (.-value next-props)))
@@ -133,7 +134,7 @@
                               (.-value (.-props *component*))
                               (.-constants (.-props *component*))))}
                  (build-lifecycle-impls opts))
-          react-component (.createClass js/React (clj->js impl))]
+          react-component (create-react-class (:name opts) impl)]
       (fn [value & constant-args]
         (let [props (js-obj)]
           (set! (.-value props) value)
@@ -147,7 +148,7 @@
   [node]
   (.unmountComponentAtNode js/ReactDOM node))
 
-(let [factory (.createFactory js/React (.-CSSTransitionGroup (.-addons js/React)))]
+(let [factory (.createFactory js/React (.-CSSTransition js/ReactTransitionGroup))]
   (defn CSSTransitionGroup
     "Return a CSSTransitionGroup ReactElement, with the specified transition options and children.
     Options must contain at least a :transitionName key.
@@ -160,7 +161,7 @@
     [opts children]
     (factory (clj->js (assoc opts :children children)))))
 
-(let [factory (.createFactory js/React (.-TransitionGroup (.-addons js/React)))]
+(let [factory (.createFactory js/React (.-TransitionGroup js/ReactTransitionGroup))]
   (defn TransitionGroup
     "Return a TransitionGroup ReactElement, with the specified properties and children.
 

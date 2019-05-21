@@ -19,9 +19,9 @@
   delegate, with the exception that setting the 'value' property will
   not cause the element to become a controlled component."
     [name delegate]
-    (js/React.createClass
-     (clj->js {:getDisplayName (fn [] (str "uncontrolled-" name))
-               :render (fn []
+    (factory/create-react-class
+     (str "uncontrolled-" name)
+     (clj->js {:render (fn []
                          (this-as this
                                   (let [new-props (gobj/clone (.-props this))]
                                     (js-delete new-props "value")
