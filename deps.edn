@@ -1,0 +1,5 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.1-beta3"}
+        org.clojure/clojurescript {:mvn/version "1.10.439"}
+        cljsjs/react-dom {:mvn/version "16.2.0-0"}
+        cljsjs/react-transition-group {:mvn/version "2.4.0-0"}}}
