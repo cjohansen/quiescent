@@ -12,3 +12,4 @@ pom.xml.asc
 /examples/resources/public/main.js.map
 .idea
 *.iml
+.cpcache
