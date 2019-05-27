@@ -2,7 +2,7 @@
  :deps {org.clojure/clojure {:mvn/version "1.10.1-beta3"}
         org.clojure/clojurescript {:mvn/version "1.10.439"}
         cljsjs/react-dom {:mvn/version "16.2.0-0"}
-        cljsjs/react-transition-group {:mvn/version "2.4.0-0"}}
+        cljsjs/react-transition-group {:mvn/version "1.2.0-0"}}
 
  :aliases {:jar {:extra-deps {pack/pack.alpha {:git/url "https://github.com/juxt/pack.alpha.git"
                                                :sha "81b9e47d992b17aa3e3af1a47aed1f0287ebe9b8"}}
