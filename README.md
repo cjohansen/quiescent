@@ -12,13 +12,13 @@ upcoming releases will.
 With tools.deps:
 
 ```clj
-cjohansen/quiescent {:mvn/version "16.2.0-0"}
+cjohansen/quiescent {:mvn/version "16.2.0-1"}
 ```
 
 With Leiningen:
 
 ```clj
-[cjohansen/quiescent "16.2.0-0"]
+[cjohansen/quiescent "16.2.0-1"]
 ```
 
 # Quiescent [Original Readme]
@@ -208,9 +208,19 @@ provided to the component constructor.
 
 ## CHANGE LOG
 
+### 16.2.0-1
+
+Fixes incompatible `cljsjs/react-transition-group` dependency. This version uses
+the 1.x API for transition groups (which is backwards compatible with previous
+versions of Quiescent).
+
 ### 16.2.0-0
 
-Warning: This release contains breaking changes.
+**Warning**: This release contains breaking changes.
+
+**Warning**: This release ships with an incompatible version of
+react-transition-groups, in order to use them, either exclude
+`cljsjs/react-transition-group` and include `1.2.0-0` manually, or use `16.2.0-1`.
 
 - **breaking change**: Upgrade React from 15 to 16
 - **breaking change**: Remove deprecated wrappers (see below)
