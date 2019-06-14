@@ -36,6 +36,15 @@
                             (.findDOMNode js/ReactDOM *component*)
                             cb
                             (.-value (.-props *component*))
+                            (.-constants (.-props *component*)))))
+
+        error-and-info (fn [impl]
+                        (react-method [info error]
+                          (apply impl
+                            (.findDOMNode js/ReactDOM *component*)
+                            info
+                            error
+                            (.-value (.-props *component*))
                             (.-constants (.-props *component*)))))]
     {:on-mount {:componentDidMount basic}
      :on-update {:componentDidUpdate with-old-value}
@@ -45,7 +54,9 @@
      :will-enter {:componentWillEnter with-callback}
      :did-enter  {:componentDidEnter basic}
      :will-leave {:componentWillLeave with-callback}
-     :did-leave {:componentDidLeave basic}}))
+     :did-leave {:componentDidLeave basic}
+
+     :did-catch {:componentDidCatch error-and-info}}))
 
 (defn- build-lifecycle-impls
   [opts-map]
@@ -120,6 +131,12 @@
      recent constant args passed to the render fn. Maps to the 'componentDidLeave' lifecycle method
      in ReactJS. See the ReactJS  documentation at
      http://facebook.github.io/react/docs/animation.html for full documentation of the behavior.
+
+     :did-catch - A function to handle exception during rendering. If added, the exception will
+     not propagate from this function, i.e. the entire page won't go blank, just this component.
+     Is passed the underlying DOM node, the actual error object, an info object containing stack
+     trace etc, the most recent value and the most recent constant args passed to the render fn.
+     For more information: https://reactjs.org/docs/error-boundaries.html
 
   The *component* dynamic var will be bound to the underlying ReactJS component for all invocations
   of the render function and invocations of functions defined in the opts map."
