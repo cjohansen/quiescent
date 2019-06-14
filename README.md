@@ -12,13 +12,13 @@ upcoming releases will.
 With tools.deps:
 
 ```clj
-cjohansen/quiescent {:mvn/version "16.2.0-1"}
+cjohansen/quiescent {:mvn/version "16.2.0-2"}
 ```
 
 With Leiningen:
 
 ```clj
-[cjohansen/quiescent "16.2.0-1"]
+[cjohansen/quiescent "16.2.0-2"]
 ```
 
 # Quiescent [Original Readme]
@@ -207,6 +207,11 @@ provided to the component constructor.
   information on ReactJS and how it works.
 
 ## CHANGE LOG
+
+### 16.2.0-2
+
+Support the React 16 `componentDidCatch` hook via `:did-catch`, by Alf Kristian
+Støyle (@stoyle).
 
 ### 16.2.0-1
 
