@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>cjohansen</groupId>
   <artifactId>quiescent</artifactId>
-  <version>16.2.0-2</version>
+  <version>16.2.0-3</version>
   <name>quiescent</name>
   <dependencies>
     <dependency>

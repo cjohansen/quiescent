@@ -12,13 +12,13 @@ upcoming releases will.
 With tools.deps:
 
 ```clj
-cjohansen/quiescent {:mvn/version "16.2.0-2"}
+cjohansen/quiescent {:mvn/version "16.2.0-3"}
 ```
 
 With Leiningen:
 
 ```clj
-[cjohansen/quiescent "16.2.0-2"]
+[cjohansen/quiescent "16.2.0-3"]
 ```
 
 # Quiescent [Original Readme]
@@ -207,6 +207,11 @@ provided to the component constructor.
   information on ReactJS and how it works.
 
 ## CHANGE LOG
+
+### 16.2.0-3
+
+`declare` all element functions (created by a macro), to help IntelliJ discover
+them.
 
 ### 16.2.0-2
 
